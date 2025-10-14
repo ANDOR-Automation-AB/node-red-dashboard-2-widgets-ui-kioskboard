@@ -26,6 +26,21 @@
         label: function() { return this.name || "kioskinput"; },
         labelStyle: function () { return this.name ? 'node_label_italic' : '' },
         oneditprepare: function () {
+            const tabs = RED.tabs.create({
+                id: 'node-kiosk-tabs',
+                onchange: function (tab) {
+                    $('#node-kiosk-tabs-content').children().hide();
+                    $('#' + tab.id).show();
+                }
+            });
+            tabs.addTab({
+                id: 'node-kiosk-tabs-main',
+                label: 'Main'
+            });
+            tabs.addTab({
+                id: 'node-kiosk-tabs-keys',
+                label: 'Keys'
+            });
             $('#node-input-size').elementSizer({
                 width: '#node-input-width',
                 height: '#node-input-height',
@@ -36,21 +51,44 @@
 </script>
 
 <script type="text/html" data-template-name="ui-kioskinput">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+    <div class="form-row func-tabs-row">
+        <ul style="min-width: 250px; margin-bottom: 20px;" id="node-kiosk-tabs"></ul>
     </div>
-    <div class="form-row">
-        <label for="node-input-group"><i class="fa fa-table"></i> Group</label>
-        <input type="text" id="node-input-group">
-    </div>
-    <div class="form-row">
-        <label><i class="fa fa-object-group"></i> Size</label>
-        <input type="hidden" id="node-input-width">
-        <input type="hidden" id="node-input-height">
-        <button class="editor-button" id="node-input-size"></button>
+
+    <div id="node-kiosk-tabs-content">
+        <div id="node-kiosk-tabs-main" style="display: none;">
+            <div class="form-row">
+                <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+                <input type="text" id="node-input-name" placeholder="Name">
+            </div>
+            <div class="form-row">
+                <label for="node-input-group"><i class="fa fa-table"></i> Group</label>
+                <input type="text" id="node-input-group">
+            </div>
+            <div class="form-row">
+                <label><i class="fa fa-object-group"></i> Size</label>
+                <input type="hidden" id="node-input-width">
+                <input type="hidden" id="node-input-height">
+                <button class="editor-button" id="node-input-size"></button>
+            </div>
+        </div>
+        <div id="node-kiosk-tabs-keys" style="display: none;">
+            <div class="form-row">
+                <textarea></textarea>
+            </div>
+        </div>
     </div>
 </script>
+
+<style>
+    #node-kiosk-tabs-keys textarea {
+        width: 100%;
+        /* height: 100%; */
+        /* resize: none; */
+        box-sizing: border-box;
+        font-family: monospace;
+    }
+</style>
 
 <script  type="text/markdown" data-help-name="ui-kioskinput">
 # Kiosk input
