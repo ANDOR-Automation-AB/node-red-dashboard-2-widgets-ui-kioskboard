@@ -17,7 +17,26 @@
                     return valid
                 }
             },
-            height: { value: 0 }
+            height: { value: 0 },
+            keys: { value: null },
+            special: { value: null },
+            keysNumpadArrayOfNumbers: { value: null },
+            theme: { value: "light" },
+            autoscroll: { value: true },
+            capslock: { value: true },
+            keyboard: { value: false },
+            mobile: { value: false },
+            animate: { value: true },
+            duration: { value: 360 },
+            animation: { value: "slide" },
+            spacebar: { value: true },
+            spacebartext: { value: "Space" },
+            font: { value: "sans-serif" },
+            fontsize: { value: "22px" },
+            weight: { value: "normal" },
+            iconsize: { value: "25px" },
+            returntext: { value: "Enter" },
+            keysEnterCanClose: { value: true }
         },
         inputs: 1,
         outputs: 1,
@@ -46,7 +65,7 @@
                 height: '#node-input-height',
                 group: '#node-input-group'
             });
-        }
+        },
     });
 </script>
 
@@ -71,10 +90,93 @@
                 <input type="hidden" id="node-input-height">
                 <button class="editor-button" id="node-input-size"></button>
             </div>
+            <div class="form-row">
+                <label for="node-input-theme"><i class="fa fa-paint-brush"></i> Theme</label>
+                <select id="node-input-theme">
+                    <option selected value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="flat">Flat</option>
+                    <option value="material">Material</option>
+                    <option value="oldschool">Oldschool</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="node-input-autoscroll"><i class="fa fa-arrows-v"></i> Autoscroll</label>
+                <input type="checkbox" id="node-input-autoscroll" style="width: auto">
+            </div>
+            <div class="form-row">
+                <label for="node-input-capslock"><i class="fa fa-arrow-up"></i> CapsLock</label>
+                <input type="checkbox" id="node-input-capslock" style="width: auto">
+            </div>
+            <div class="form-row">
+                <label for="node-input-keyboard"><i class="fa fa-keyboard-o"></i> Keyboard</label>
+                <input type="checkbox" id="node-input-keyboard" style="width: auto">
+            </div>
+            <div class="form-row">
+                <label for="node-input-mobile"><i class="fa fa-mobile"></i> Mobile</label>
+                <input type="checkbox" id="node-input-mobile" style="width: auto">
+            </div>
+            <div class="form-row">
+                <label for="node-input-animate"><i class="fa fa-spinner"></i> Animate</label>
+                <input type="checkbox" id="node-input-animate" style="width: auto">
+            </div>
+            <div class="form-row">
+                <label for="node-input-duration"><i class="fa fa-clock-o"></i> Duration</label>
+                <input type="number" id="node-input-duration" style="width: auto">
+            </div>
+            <div class="form-row">
+                <label for="node-input-animation">Animation</label>
+                <select id="node-input-animation">
+                    <option selected value="slide">Slide</option>
+                    <option value="fade">Fade</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="node-input-spacebar"><i class="fa fa-keyboard-o"></i> Spacebar</label>
+                <input type="checkbox" id="node-input-spacebar" style="width: auto">
+            </div>
+            <div class="form-row">
+                <label for="node-input-spacebartext"><i class="fa fa-keyboard-o"></i> Spacebar text</label>
+                <input type="text" id="node-input-spacebartext" placeholder='Space'>
+            </div>
+            <div class="form-row">
+                <label for="node-input-font"><i class="fa fa-font"></i> Font</label>
+                <input type="text" id="node-input-font" placeholder='sans-serif'>
+            </div>
+            <div class="form-row">
+                <label for="node-input-fontsize"><i class="fa fa-text-height"></i> Fontsize</label>
+                <input type="text" id="node-input-fontsize" placeholder='22px'>
+            </div>
+            <div class="form-row">
+                <label for="node-input-weight"><i class="fa fa-bold"></i> Fontweight</label>
+                <input type="text" id="node-input-weight" placeholder='normal'>
+            </div>
+            <div class="form-row">
+                <label for="node-input-iconsize"><i class="fa fa-smile-o"></i> Iconsize</label>
+                <input type="text" id="node-input-iconsize" placeholder='25px'>
+            </div>
+            <div class="form-row">
+                <label for="node-input-returntext"><i class="fa fa-keyboard-o"></i> Return text</label>
+                <input type="text" id="node-input-returntext" placeholder='Enter'>
+            </div>
+            <div class="form-row">
+                <label for="node-input-keysEnterCanClose"><i class="fa fa-times-circle"></i> Close on return</label>
+                <input type="checkbox" id="node-input-keysEnterCanClose" style="width: auto">
+            </div>
         </div>
+
         <div id="node-kiosk-tabs-keys" style="display: none;">
             <div class="form-row">
-                <textarea rows="10"></textarea>
+                <label for="node-input-keys"><i class="fa fa-keyboard-o"></i> Keys JSON</label>
+                <textarea id="node-input-keys" rows="10" placeholder='[{"0":"1","1":"2","2":"3"}]'></textarea>
+            </div>
+            <div class="form-row">
+                <label for="node-input-special"> Special characters JSON</label>
+                <input type="text" id="node-input-special" placeholder='["#", "€", "%", "+", "-", "*"]'>
+            </div>
+            <div class="form-row">
+                <label for="node-input-keysNumpadArrayOfNumbers"> Numpad keys JSON</label>
+                <input type="text" id="node-input-keysNumpadArrayOfNumbers" placeholder='[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]'>
             </div>
         </div>
     </div>
@@ -83,14 +185,120 @@
 <style>
     #node-kiosk-tabs-keys textarea {
         width: 100%;
-        /* height: 100%; */
-        /* resize: none; */
         box-sizing: border-box;
         font-family: monospace;
     }
 </style>
 
-<script  type="text/markdown" data-help-name="ui-kioskinput">
-# Kiosk input
+<script type="text/markdown" data-help-name="ui-kioskinput">
 
+This widget provides a text input field with an on-screen keyboard powered by furcan KioskBoard.
+
+### Main
+
+**Theme** -
+Select the visual style of the keyboard.
+
+Available options:
+- light — Light theme (default)
+- dark — Dark mode
+- flat — Minimal flat design
+- material — Material-style design
+- oldschool — Classic button look
+
+**Autoscroll** -
+Enable scroll into view when opened on smaller screens.
+
+**CapsLock** -
+Enable start with uppercase letters.
+
+**Keyboard** -
+Allow use of a physical (hardware) keyboard. 
+
+**Mobile** -
+Allow on-screen keyboard provided by the mobile device.
+
+**Animate** -
+Enable animated transitions.
+
+**Duration** -
+Set the duration of the animated transition.
+
+**Animation** -
+Select the CSS animation used when opening or closing the keyboard.
+
+Available options:
+- slide — Slides in and out. (default)
+- fade — Fades in and out.
+
+**Spacebar** -
+Allow use of the spacebar.
+
+**Spacebar text** -
+Define the spacebar label. Use a blank `" "` to use an empty space label.
+
+**Font** -
+Define the font family of the keys.
+
+**Fontsize** -
+Define the font size of the keys.
+
+**Fontweight** -
+Define the font weight of the keys. Weight can be specified using keyword values 
+or numeric values ranging from 100 to 900.
+
+Keyword values
+- normal — Defines normal characters (default).
+- bold — Defines thick characters.
+- bolder — Defines thicker characters relative to the parent element.
+- lighter — Defines lighter characters relative to the parent element.
+
+Numeric values (range from 100 to 900) example:
+- 400 — equivalent to normal.
+- 700 — equivalent to bold.
+
+**Iconsize** -
+Define the size of the icon keys.
+
+**Return text** -
+Define the return key label. Use a blank `" "` to use an empty return key label.
+
+**Close on return** -
+Define if the Enter key can close and remove the keyboard.
+
+---
+
+### Keys
+Define the keyboard layout.
+
+**Keys JSON (mandatory)** -
+Defines the keyboard layout.
+
+Must be a valid JSON array of row objects.
+
+Example:
+```json
+[
+  {"0": "A", "1": "B", "2": "C"},
+  {"0": "D", "1": "E", "2": "F"},
+  {"0": "G", "1": "H", "2": "I"},
+  {"0": "J", "1": "K", "2": "L"}
+]
+```
+
+**Special Characters (optional)** -
+Override the built-in special characters.
+
+Example:
+```json
+["#", "€", "%", "+", "-", "*"]
+```
+
+**Numpad keys JSON (optional)** -
+Override the built-in numpad keys.
+
+Example:
+```
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+```
 </script>

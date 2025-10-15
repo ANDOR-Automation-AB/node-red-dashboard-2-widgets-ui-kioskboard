@@ -12,7 +12,7 @@ module.exports = function(RED) {
                 base.stores.data.save(base, node, msg)
                 send(msg)
                 if (done) done()
-            }
+            },
         }
         if (group) group.register(node, config, evts)
     }
