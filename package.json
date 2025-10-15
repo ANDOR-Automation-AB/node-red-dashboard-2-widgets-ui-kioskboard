@@ -6,7 +6,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "wsl:install": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl.ps1",
+    "wsl:install": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl_install.ps1",
+    "wsl:run": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl_install_run.ps1",
     "build": "vite build"
   },
   "files": [
