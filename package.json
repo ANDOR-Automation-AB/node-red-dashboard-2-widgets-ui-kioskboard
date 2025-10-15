@@ -6,9 +6,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "wsl:install": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl_install.ps1",
-    "wsl:restart": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl_install_run.ps1",
-    "wsl:start": "wsl bash -c \"node-red\"",
+    "wsl:install": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl.ps1",
     "build": "vite build"
   },
   "files": [
