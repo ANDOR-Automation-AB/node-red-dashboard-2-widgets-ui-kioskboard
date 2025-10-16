@@ -1,5 +1,12 @@
 This widget provides a text input field with an on-screen keyboard powered by furcan KioskBoard.
 
+## Install
+
+Install this widget in your `~/.node-red` folder by using the following command
+```
+npm i @andor-automation/node-red-dashboard-2-widgets-ui-kioskboard
+```
+
 ### Properties — Main
 
 - **Type**  
@@ -100,9 +107,7 @@ This widget provides a text input field with an on-screen keyboard powered by fu
 Define the keyboard layout.
 
 - **Keys JSON (mandatory)**  
-  Defines the keyboard layout.
-  
-  Must be a valid JSON array of row objects.
+  Defines the keyboard layout. Must be a valid JSON array of row objects.
   
   Example:
   ```json
