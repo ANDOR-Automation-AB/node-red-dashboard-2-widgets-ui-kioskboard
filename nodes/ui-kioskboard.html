@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('ui-kioskinput', {
+    RED.nodes.registerType('ui-kioskboard', {
         category: 'andor',
         color: '#a6bbcf',
         defaults: {
@@ -18,31 +18,31 @@
                 }
             },
             height: { value: 0 },
-            keys: { value: null },
-            special: { value: null },
+            keysArrayOfObjects: { value: null },
+            keysSpecialCharsArrayOfStrings: { value: null },
             keysNumpadArrayOfNumbers: { value: null },
             theme: { value: "light" },
-            autoscroll: { value: true },
-            capslock: { value: true },
-            keyboard: { value: false },
-            mobile: { value: false },
-            animate: { value: true },
-            duration: { value: 360 },
-            animation: { value: "slide" },
-            spacebar: { value: true },
-            spacebartext: { value: "Space" },
-            font: { value: "sans-serif" },
-            fontsize: { value: "22px" },
-            weight: { value: "normal" },
-            iconsize: { value: "25px" },
-            returntext: { value: "Enter" },
+            autoScroll: { value: true },
+            capsLockActive: { value: true },
+            allowRealKeyboard: { value: false },
+            allowMobileKeyboard: { value: false },
+            cssAnimations: { value: true },
+            cssAnimationsDuration: { value: 360 },
+            cssAnimationsStyle: { value: "slide" },
+            keysAllowSpacebar: { value: true },
+            keysSpacebarText: { value: "Space" },
+            keysFontFamily: { value: "sans-serif" },
+            keysFontSize: { value: "22px" },
+            keysFontWeight: { value: "normal" },
+            keysIconSize: { value: "25px" },
+            keysEnterText: { value: "Enter" },
             keysEnterCanClose: { value: true }
         },
         inputs: 1,
         outputs: 1,
-        icon: "file.svg",
-        paletteLabel: 'kioskinput',
-        label: function() { return this.name || "kioskinput"; },
+        icon: "fa-keyboard-o",
+        paletteLabel: 'kioskboard',
+        label: function() { return this.name || "kioskboard"; },
         labelStyle: function () { return this.name ? 'node_label_italic' : '' },
         oneditprepare: function () {
             const tabs = RED.tabs.create({
@@ -69,7 +69,7 @@
     });
 </script>
 
-<script type="text/html" data-template-name="ui-kioskinput">
+<script type="text/html" data-template-name="ui-kioskboard">
     <div class="form-row func-tabs-row">
         <ul style="min-width: 250px; margin-bottom: 20px;" id="node-kiosk-tabs"></ul>
     </div>
@@ -101,63 +101,63 @@
                 </select>
             </div>
             <div class="form-row">
-                <label for="node-input-autoscroll"><i class="fa fa-arrows-v"></i> Autoscroll</label>
-                <input type="checkbox" id="node-input-autoscroll" style="width: auto">
+                <label for="node-input-autoScroll"><i class="fa fa-arrows-v"></i> Autoscroll</label>
+                <input type="checkbox" id="node-input-autoScroll" style="width: auto">
             </div>
             <div class="form-row">
-                <label for="node-input-capslock"><i class="fa fa-arrow-up"></i> CapsLock</label>
-                <input type="checkbox" id="node-input-capslock" style="width: auto">
+                <label for="node-input-capsLockActive"><i class="fa fa-arrow-up"></i> CapsLock</label>
+                <input type="checkbox" id="node-input-capsLockActive" style="width: auto">
             </div>
             <div class="form-row">
-                <label for="node-input-keyboard"><i class="fa fa-keyboard-o"></i> Keyboard</label>
-                <input type="checkbox" id="node-input-keyboard" style="width: auto">
+                <label for="node-input-allowRealKeyboard"><i class="fa fa-keyboard-o"></i> Keyboard</label>
+                <input type="checkbox" id="node-input-allowRealKeyboard" style="width: auto">
             </div>
             <div class="form-row">
-                <label for="node-input-mobile"><i class="fa fa-mobile"></i> Mobile</label>
-                <input type="checkbox" id="node-input-mobile" style="width: auto">
+                <label for="node-input-allowMobileKeyboard"><i class="fa fa-mobile"></i> Mobile</label>
+                <input type="checkbox" id="node-input-allowMobileKeyboard" style="width: auto">
             </div>
             <div class="form-row">
-                <label for="node-input-animate"><i class="fa fa-spinner"></i> Animate</label>
-                <input type="checkbox" id="node-input-animate" style="width: auto">
+                <label for="node-input-cssAnimations"><i class="fa fa-spinner"></i> Animate</label>
+                <input type="checkbox" id="node-input-cssAnimations" style="width: auto">
             </div>
             <div class="form-row">
-                <label for="node-input-duration"><i class="fa fa-clock-o"></i> Duration</label>
-                <input type="number" id="node-input-duration" style="width: auto">
+                <label for="node-input-cssAnimationsDuration"><i class="fa fa-clock-o"></i> Duration</label>
+                <input type="number" id="node-input-cssAnimationsDuration" style="width: auto">
             </div>
             <div class="form-row">
-                <label for="node-input-animation">Animation</label>
-                <select id="node-input-animation">
+                <label for="node-input-cssAnimationsStyle">Animation</label>
+                <select id="node-input-cssAnimationsStyle">
                     <option selected value="slide">Slide</option>
                     <option value="fade">Fade</option>
                 </select>
             </div>
             <div class="form-row">
-                <label for="node-input-spacebar"><i class="fa fa-keyboard-o"></i> Spacebar</label>
-                <input type="checkbox" id="node-input-spacebar" style="width: auto">
+                <label for="node-input-keysAllowSpacebar"><i class="fa fa-keyboard-o"></i> Spacebar</label>
+                <input type="checkbox" id="node-input-keysAllowSpacebar" style="width: auto">
             </div>
             <div class="form-row">
-                <label for="node-input-spacebartext"><i class="fa fa-keyboard-o"></i> Spacebar text</label>
-                <input type="text" id="node-input-spacebartext" placeholder='Space'>
+                <label for="node-input-keysSpacebarText"><i class="fa fa-keyboard-o"></i> Spacebar text</label>
+                <input type="text" id="node-input-keysSpacebarText" placeholder='Space'>
             </div>
             <div class="form-row">
-                <label for="node-input-font"><i class="fa fa-font"></i> Font</label>
-                <input type="text" id="node-input-font" placeholder='sans-serif'>
+                <label for="node-input-keysFontFamily"><i class="fa fa-font"></i> Font</label>
+                <input type="text" id="node-input-keysFontFamily" placeholder='sans-serif'>
             </div>
             <div class="form-row">
-                <label for="node-input-fontsize"><i class="fa fa-text-height"></i> Fontsize</label>
-                <input type="text" id="node-input-fontsize" placeholder='22px'>
+                <label for="node-input-keysFontSize"><i class="fa fa-text-height"></i> Fontsize</label>
+                <input type="text" id="node-input-keysFontSize" placeholder='22px'>
             </div>
             <div class="form-row">
-                <label for="node-input-weight"><i class="fa fa-bold"></i> Fontweight</label>
-                <input type="text" id="node-input-weight" placeholder='normal'>
+                <label for="node-input-keysFontWeight"><i class="fa fa-bold"></i> Fontweight</label>
+                <input type="text" id="node-input-keysFontWeight" placeholder='normal'>
             </div>
             <div class="form-row">
-                <label for="node-input-iconsize"><i class="fa fa-smile-o"></i> Iconsize</label>
-                <input type="text" id="node-input-iconsize" placeholder='25px'>
+                <label for="node-input-keysIconSize"><i class="fa fa-smile-o"></i> Iconsize</label>
+                <input type="text" id="node-input-keysIconSize" placeholder='25px'>
             </div>
             <div class="form-row">
-                <label for="node-input-returntext"><i class="fa fa-keyboard-o"></i> Return text</label>
-                <input type="text" id="node-input-returntext" placeholder='Enter'>
+                <label for="node-input-keysEnterText"><i class="fa fa-keyboard-o"></i> Return text</label>
+                <input type="text" id="node-input-keysEnterText" placeholder='Enter'>
             </div>
             <div class="form-row">
                 <label for="node-input-keysEnterCanClose"><i class="fa fa-times-circle"></i> Close on return</label>
@@ -167,12 +167,12 @@
 
         <div id="node-kiosk-tabs-keys" style="display: none;">
             <div class="form-row">
-                <label for="node-input-keys"><i class="fa fa-keyboard-o"></i> Keys JSON</label>
-                <textarea id="node-input-keys" rows="10" placeholder='[{"0":"1","1":"2","2":"3"}]'></textarea>
+                <label for="node-input-keysArrayOfObjects"><i class="fa fa-keyboard-o"></i> Keys JSON</label>
+                <textarea id="node-input-keysArrayOfObjects" rows="10" placeholder='[{"0":"1","1":"2","2":"3"}]'></textarea>
             </div>
             <div class="form-row">
-                <label for="node-input-special"> Special characters JSON</label>
-                <input type="text" id="node-input-special" placeholder='["#", "€", "%", "+", "-", "*"]'>
+                <label for="node-input-keysSpecialCharsArrayOfStrings"> Special characters JSON</label>
+                <input type="text" id="node-input-keysSpecialCharsArrayOfStrings" placeholder='["#", "€", "%", "+", "-", "*"]'>
             </div>
             <div class="form-row">
                 <label for="node-input-keysNumpadArrayOfNumbers"> Numpad keys JSON</label>
@@ -190,7 +190,7 @@
     }
 </style>
 
-<script type="text/markdown" data-help-name="ui-kioskinput">
+<script type="text/markdown" data-help-name="ui-kioskboard">
 
 This widget provides a text input field with an on-screen keyboard powered by furcan KioskBoard.
 

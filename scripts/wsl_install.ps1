@@ -5,5 +5,5 @@ Copy-Item -Path (Join-Path $source "*.tgz") -Destination $destination -Force -Ve
 Write-Host "Files copied."
 
 Write-Host "Installing package..."
-wsl bash -c "cd /home/andor/.node-red && npm i andor-automation-node-red-dashboard-2-widgets-ui-kioskinput-1.0.0.tgz"
+wsl bash -c "cd /home/andor/.node-red && npm i andor-automation-node-red-dashboard-2-widgets-ui-kioskboard-1.0.0.tgz"
 Write-Host "Done."

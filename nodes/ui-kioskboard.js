@@ -1,5 +1,5 @@
 module.exports = function(RED) {
-    function KioskinputNode(config) {
+    function KioskboardNode(config) {
         RED.nodes.createNode(this, config)
 
         const node = this
@@ -10,11 +10,10 @@ module.exports = function(RED) {
             onAction: true,
             onInput: function (msg, send, done) {
                 base.stores.data.save(base, node, msg)
-                send(msg)
                 if (done) done()
-            },
+            }
         }
         if (group) group.register(node, config, evts)
     }
-    RED.nodes.registerType('ui-kioskinput', KioskinputNode)
+    RED.nodes.registerType('ui-kioskboard', KioskboardNode)
 }

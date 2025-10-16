@@ -1,5 +1,5 @@
-import UIKioskinput from './components/UIKioskinput.vue'
+import UIKioskboard from './components/UIKioskboard.vue'
 
-export { UIKioskinput }
+export { UIKioskboard }
 
-export default { 'ui-kioskinput': UIKioskinput }
+export default { 'ui-kioskboard': UIKioskboard }
