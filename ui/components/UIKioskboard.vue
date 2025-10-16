@@ -1,11 +1,18 @@
 <template>
-    <input 
-        :class="`kioskboard-input-${id}`" 
-        :value="value ?? ''"
-        data-kioskboard-type="keyboard" 
-        data-kioskboard-placement="bottom" 
-        data-kioskboard-specialcharacters="false" 
-        placeholder="Test input" />
+    <v-row>
+        <v-col :cols="gap" class="d-flex flex-start align-center">
+            <p>{{ label }}</p>
+        </v-col>
+        <v-col :cols="12 - gap">
+            <input
+                :class="`kioskboard-input-${id}`" 
+                :value="value ?? ''"
+                :data-kioskboard-type="dataKioskboardType" 
+                data-kioskboard-placement="bottom" 
+                :data-kioskboard-specialcharacters="dataKioskboardSpecialcharacters" 
+                :placeholder="label" />
+        </v-col>
+    </v-row>
 </template>
 
 <script>
@@ -26,6 +33,23 @@
         },
         created() { 
             this.$dataTracker(this.id, this.onInput, this.onLoad); 
+        },
+        computed: {
+            dataKioskboardType: function () {
+                return this.getProperty('dataKioskboardType')
+            },
+            dataKioskboardSpecialcharacters: function () {
+                return this.getProperty('dataKioskboardSpecialcharacters')
+            },
+            label: function () {
+                return this.getProperty('label')
+            },
+            gap: function () { 
+                let val = Number(this.getProperty('gap')) || 4;
+                if (val > 12) val = 12
+                if (val < 1)  val = 1;
+                return val
+            }            
         },
         methods: {
             onInput(msg) { 
@@ -69,7 +93,8 @@
                     keysEnterCallback: () => {
                         const value = document.querySelector(selector).value;
                         this.$socket.emit('widget-send', this.id, { 
-                            topic: this.msg.topic, payload: value 
+                            topic: this.msg?.topic || this.props.topic || undefined,
+                            payload: value 
                         });
                     },
                     keysEnterCanClose: this.props.keysEnterCanClose
@@ -79,3 +104,15 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid #555;
+  border-radius: 0.50rem;
+  background-color: #FFF;
+  font-size: 1rem;
+  outline: none;
+}
+</style>
