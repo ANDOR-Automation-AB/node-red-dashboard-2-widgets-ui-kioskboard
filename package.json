@@ -1,5 +1,5 @@
 {
-  "name": "@andor-automation/node-red-dashboard-2-widgets-ui-kioskinput",
+  "name": "@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard",
   "version": "1.0.0",
   "description": "",
   "author": "Andor Automation AB",
@@ -28,15 +28,15 @@
   "node-red": {
 		"version": ">=3.0.0",
 		"nodes": {
-      "ui-kioskinput": "nodes/ui-kioskinput.js"
+      "ui-kioskboard": "nodes/ui-kioskboard.js"
     }
   },
   "node-red-dashboard-2": {
     "version": "0.8.0",
     "widgets": {
-      "ui-kioskinput": {
-        "output": "ui-kioskinput.umd.js",
-        "component": "UIKioskinput"
+      "ui-kioskboard": {
+        "output": "ui-kioskboard.umd.js",
+        "component": "UIKioskboard"
       }
     }
   }
