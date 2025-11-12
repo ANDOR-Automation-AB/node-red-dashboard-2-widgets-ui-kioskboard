@@ -2,7 +2,7 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-gray?style=flat-square&logo=github&logoColor=white&label=)](https://github.com/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard)
 [![npm](https://img.shields.io/badge/npm-gray?style=flat-square&logo=npm&logoColor=white&label=)](https://www.npmjs.com/package/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard)
-[![GitHub last commit](https://img.shields.io/github/last-commit/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://github.com/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard)
+![GitHub last commit](https://img.shields.io/github/last-commit/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard?color=gray)
 [![npm version](https://img.shields.io/npm/v/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://www.npmjs.com/package/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard)
 [![npm downloads](https://img.shields.io/npm/dt/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://www.npmjs.com/package/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard)
 [![License](https://img.shields.io/npm/l/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://github.com/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard/blob/main/LICENSE)
