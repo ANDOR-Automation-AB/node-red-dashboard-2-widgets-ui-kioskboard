@@ -71,6 +71,7 @@
             script.async = true;
             script.onload = () => {
                 const selector = `.kioskboard-input-${this.id}`;
+                const input = document.querySelector(selector);
                 KioskBoard.run(selector, {
                     keysArrayOfObjects: this.props.keysArrayOfObjects && JSON.parse(this.props.keysArrayOfObjects),
                     keysSpecialCharsArrayOfStrings: this.props.keysSpecialCharsArrayOfStrings && JSON.parse(this.props.keysSpecialCharsArrayOfStrings),
@@ -98,6 +99,31 @@
                         });
                     },
                     keysEnterCanClose: this.props.keysEnterCanClose
+                });
+                window.addEventListener('keyup', (ev) => {
+                    if (ev.key === 'Enter') {
+                        const board = document.querySelector('#KioskBoard-VirtualKeyboard');
+                        if (!board) return;
+                        ev.preventDefault();
+                        const value = document.querySelector(selector).value;
+                        this.$socket.emit('widget-send', this.id, { 
+                            topic: this.msg?.topic || this.props.topic || undefined,
+                            payload: value 
+                        });
+                        if (board) {
+                            if (board.classList.contains('kioskboard-fade')) {
+                                board.classList.add('kioskboard-fade-remove');
+                            }
+                            else if (board.classList.contains('kioskboard-slide')) {
+                                board.classList.add('kioskboard-slide-remove');
+                            }
+                            setTimeout(() => {
+                                board.remove();
+                                document.body.classList.remove('kioskboard-body-padding');
+                            }, 360);
+                        }
+                        document.querySelector(selector).blur();
+                    }
                 });
             }
             document.head.appendChild(script);

@@ -1,6 +1,30 @@
+# UI Kioskboard Widget
+
+[![GitHub](https://img.shields.io/badge/GitHub-gray?style=flat-square&logo=github&logoColor=white&label=)](https://github.com/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard)
+[![npm](https://img.shields.io/badge/npm-gray?style=flat-square&logo=npm&logoColor=white&label=)](https://www.npmjs.com/package/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard)
+[![GitHub last commit](https://img.shields.io/github/last-commit/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://github.com/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard)
+[![npm version](https://img.shields.io/npm/v/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://www.npmjs.com/package/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard)
+[![npm downloads](https://img.shields.io/npm/dt/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://www.npmjs.com/package/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard)
+[![License](https://img.shields.io/npm/l/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://github.com/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard/blob/main/LICENSE)
+
 This widget provides a text input field with an on-screen keyboard powered by furcan KioskBoard.
 
+## Version history
+
+### 1.0.1
+- Added support for closing the virtual keyboard when pressing Enter on a physical keyboard.
+- Animation handling for `fade` and `slide` transitions when using Enter on a physical keyboard.
+
+### 1.0.0
+- Initial release.
+
+
 ## Install
+
+Make sure you install this widget inside your `.node-red` directory.
+```
+cd ~/.node-red
+```
 
 Install this widget in your `~/.node-red` folder by using the following command
 ```
