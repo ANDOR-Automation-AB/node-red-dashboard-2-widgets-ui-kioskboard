@@ -54,12 +54,12 @@
         methods: {
             onInput(msg) { 
                 this.msg = msg;
-                this.value = msg?.payload;
+                this.value = msg.inputValue ?? msg?.payload;
             },
             onLoad(msg, base) {
                 this.base = base;
                 this.msg  = msg; 
-                this.value = msg?.payload;
+                this.value = msg.inputValue ?? msg?.payload;
             }
         },
         mounted() {
@@ -93,12 +93,14 @@
                     keysEnterText: this.props.keysEnterText,
                     keysEnterCallback: () => {
                         let value = document.querySelector(selector).value;
-                        const scale = Number(this.props.scale || 1);
-                        const numeric = Number(value);
-                        value = numeric * scale;
+                        const input = value;
+                        if (!isNaN(value) && value.trim() !== "") {
+                            value = Number(value) * Number(this.props.scale || 1);
+                        }
                         this.$socket.emit('widget-send', this.id, { 
                             topic: this.msg?.topic || this.props.topic || undefined,
-                            payload: value 
+                            payload: value,
+                            inputValue: input
                         });
                     },
                     keysEnterCanClose: this.props.keysEnterCanClose
@@ -109,12 +111,14 @@
                         if (!board) return;
                         ev.preventDefault();
                         let value = document.querySelector(selector).value;
-                        const scale = Number(this.props.scale || 1);
-                        const numeric = Number(value);
-                        value = numeric * scale;
+                        const input = value;
+                        if (!isNaN(value) && value.trim() !== "") {
+                            value = Number(value) * Number(this.props.scale || 1);
+                        }
                         this.$socket.emit('widget-send', this.id, { 
                             topic: this.msg?.topic || this.props.topic || undefined,
-                            payload: value 
+                            payload: value,
+                            inputValue: input
                         });
                         if (board) {
                             if (board.classList.contains('kioskboard-fade')) {

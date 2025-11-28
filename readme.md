@@ -11,7 +11,7 @@ This widget provides a text input field with an on-screen keyboard powered by fu
 
 ## Version history
 
-### 1.1.0
+### 1.1.1
 - Added scale option for converting value to calibrated or unit-adjusted output.
 
 ### 1.0.1
@@ -59,7 +59,7 @@ npm i @andor-automation/node-red-dashboard-2-widgets-ui-kioskboard
 - **Label**  
   Set the input label text. Also sets the placeholder text of the input field.
 
-- **Scale**
+- **Scale**  
   Factor to multiply the entered value before sending.
 
 - **Type**  
