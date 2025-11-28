@@ -92,7 +92,10 @@
                     keysIconSize: this.props.keysIconSize,
                     keysEnterText: this.props.keysEnterText,
                     keysEnterCallback: () => {
-                        const value = document.querySelector(selector).value;
+                        let value = document.querySelector(selector).value;
+                        const scale = Number(this.props.scale || 1);
+                        const numeric = Number(value);
+                        value = numeric * scale;
                         this.$socket.emit('widget-send', this.id, { 
                             topic: this.msg?.topic || this.props.topic || undefined,
                             payload: value 
@@ -105,7 +108,10 @@
                         const board = document.querySelector('#KioskBoard-VirtualKeyboard');
                         if (!board) return;
                         ev.preventDefault();
-                        const value = document.querySelector(selector).value;
+                        let value = document.querySelector(selector).value;
+                        const scale = Number(this.props.scale || 1);
+                        const numeric = Number(value);
+                        value = numeric * scale;
                         this.$socket.emit('widget-send', this.id, { 
                             topic: this.msg?.topic || this.props.topic || undefined,
                             payload: value 

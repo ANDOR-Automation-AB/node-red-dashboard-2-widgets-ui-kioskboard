@@ -11,6 +11,9 @@ This widget provides a text input field with an on-screen keyboard powered by fu
 
 ## Version history
 
+### 1.1.0
+- Added scale option for converting value to calibrated or unit-adjusted output.
+
 ### 1.0.1
 - Added support for closing the virtual keyboard when pressing Enter on a physical keyboard.
 - Animation handling for `fade` and `slide` transitions when using Enter on a physical keyboard.
@@ -31,7 +34,33 @@ Install this widget in your `~/.node-red` folder by using the following command
 npm i @andor-automation/node-red-dashboard-2-widgets-ui-kioskboard
 ```
 
+## Update
+
+Make sure you install this update inside your `.node-red` directory.
+```
+cd ~/.node-red
+```
+
+Install this update in your `~/.node-red` folder by using the following command
+```
+npm i @andor-automation/node-red-dashboard-2-widgets-ui-kioskboard
+```
+
+**Restart node-red** and reload your Node-RED browser page.
+
 ### Properties — Main
+
+- **Topic**  
+  Defines the `msg.topic`.  
+  
+  If the Topic is blank no `msg.topic` will be sent.  
+  **Note:** This Topic will be overwritten if any input `msg.topic` arrive.
+
+- **Label**  
+  Set the input label text. Also sets the placeholder text of the input field.
+
+- **Scale**
+  Factor to multiply the entered value before sending.
 
 - **Type**  
   Select the type of keyboard.  
@@ -53,15 +82,6 @@ npm i @andor-automation/node-red-dashboard-2-widgets-ui-kioskboard
   - flat — Minimal flat design
   - material — Material-style design
   - oldschool — Classic button look
-
-- **Topic**  
-  Defines the `msg.topic`.  
-  
-  If the Topic is blank no `msg.topic` will be sent.  
-  This Topic will be overwritten if any input `msg.topic` arrive.
-
-- **Label**  
-  Set the input label text. Also sets the placeholder text of the input field.
 
 - **Gap**  
   Defines the gap between the input label and the input field.  

@@ -21,6 +21,7 @@
             label: { value: 'label' },
             gap: { value: '4' },
             topic: { value: null },
+            scale: { value: '1' },
             keysArrayOfObjects: { value: 
 `[
  {"0": "Q", "1": "W", "2": "E", "3": "R", "4": "T", "5": "Y", "6": "U", "7": "I", "8": "O", "9": "P", "10": "Å"},
@@ -99,7 +100,21 @@
                 <input type="hidden" id="node-input-width">
                 <input type="hidden" id="node-input-height">
                 <button class="editor-button" id="node-input-size"></button>
-            </div>            
+            </div>
+            <div class="form-row">
+                <label for="node-input-topic"><i class="fa fa-envelope-o"></i> Topic</label>
+                <input type="text" id="node-input-topic">
+            </div>
+            <div class="form-row">
+                <label for="node-input-label"><i class="fa fa-tag"></i> Label</label>
+                <input type="text" id="node-input-label" placeholder="label">
+            </div>
+            <div class="form-row">
+                <label for="node-input-scale">
+                    <i class="fa fa-expand"></i> Scale
+                </label>
+                <input type="number" id="node-input-scale" step="0.01" placeholder="1">
+            </div>
             <div class="form-row">
                 <label for="node-input-dataKioskboardType">Type</label>
                 <select id="node-input-dataKioskboardType">
@@ -121,14 +136,6 @@
                     <option value="material">Material</option>
                     <option value="oldschool">Oldschool</option>
                 </select>
-            </div>
-            <div class="form-row">
-                <label for="node-input-topic"><i class="fa fa-envelope-o"></i> Topic</label>
-                <input type="text" id="node-input-topic">
-            </div>
-            <div class="form-row">
-                <label for="node-input-label"><i class="fa fa-tag"></i> Label</label>
-                <input type="text" id="node-input-label" placeholder="label">
             </div>
             <div class="form-row">
                 <label for="node-input-gap"><i class="fa fa-arrows-h"></i> Gap</label>
@@ -230,6 +237,19 @@ This widget provides a text input field with an on-screen keyboard powered by fu
 
 ### Main
 
+**Topic** -
+Defines the `msg.topic`.
+
+If the Topic is blank no `msg.topic` will be sent.
+
+Note: this Topic will be overwritten if any input `msg.topic` arrive.
+
+**Label** -
+Set the input label text. Also sets the placeholder text of the input field.
+
+**Scale** -
+Factor to multiply the entered value before sending.
+
 **Type** -
 Select the type of keyboard.
 
@@ -250,16 +270,6 @@ Available options:
 - flat — Minimal flat design
 - material — Material-style design
 - oldschool — Classic button look
-
-**Topic** -
-Defines the `msg.topic`.
-
-If the Topic is blank no `msg.topic` will be sent.
-
-This Topic will be overwritten if any input `msg.topic` arrive.
-
-**Label** -
-Set the input label text. Also sets the placeholder text of the input field.
 
 **Gap** -
 Defines the gap between the input label and the input field.
