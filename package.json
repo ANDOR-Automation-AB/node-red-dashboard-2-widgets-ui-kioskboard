@@ -15,11 +15,7 @@
     "keyboard"
   ],
   "scripts": {
-    "wsl:install": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl_install.ps1",
-    "wsl:restart": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl_install_run.ps1",
-    "wsl:start": "wsl bash -c \"node-red\"",
-    "build": "vite build && pack",
-    "release": "npm version patch && npm publish --access public"
+    "build": "vite build && npm pack"
   },
   "files": [
     "nodes",
