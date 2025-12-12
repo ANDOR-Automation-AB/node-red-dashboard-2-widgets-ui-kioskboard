@@ -7,9 +7,17 @@
 [![npm downloads](https://img.shields.io/npm/dt/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://www.npmjs.com/package/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard)
 [![License](https://img.shields.io/npm/l/@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard.svg)](https://github.com/ANDOR-Automation-AB/node-red-dashboard-2-widgets-ui-kioskboard/blob/main/LICENSE)
 
-This widget provides a text input field with an on-screen keyboard powered by furcan KioskBoard.
+This project provides a text input field with an on-screen keyboard powered by furcan KioskBoard.
 
 ## Version history
+
+**Maintenance notice**  
+This project will no longer be actively developed or maintained.  
+The code will remain available for use as-is, but no further updates or support are planned.
+
+### 1.1.2
+- Fixed an issue where the input value was not converted back correctly when the output used a scaling factor.
+- Changed behavior so the value defaults to an empty string when ``msg`` is missing in ``onLoad`` or ``onInput``.
 
 ### 1.1.1
 - Added scale option for converting value to calibrated or unit-adjusted output.
@@ -22,7 +30,7 @@ This widget provides a text input field with an on-screen keyboard powered by fu
 - Initial release.
 
 
-## Install
+## Install and Update
 
 Make sure you install this widget inside your `.node-red` directory.
 ```
@@ -34,21 +42,11 @@ Install this widget in your `~/.node-red` folder by using the following command
 npm i @andor-automation/node-red-dashboard-2-widgets-ui-kioskboard
 ```
 
-## Update
+**Restart node-red**
 
-Make sure you install this update inside your `.node-red` directory.
-```
-cd ~/.node-red
-```
+## Properties
 
-Install this update in your `~/.node-red` folder by using the following command
-```
-npm i @andor-automation/node-red-dashboard-2-widgets-ui-kioskboard
-```
-
-**Restart node-red** and reload your Node-RED browser page.
-
-### Properties — Main
+### Main
 
 - **Topic**  
   Defines the `msg.topic`.  
@@ -147,7 +145,7 @@ npm i @andor-automation/node-red-dashboard-2-widgets-ui-kioskboard
 - **Close on return**  
   Define if the Enter key can close and remove the keyboard.
 
-### Properties — Keys
+### Keys
 Define the keyboard layout.
 
 - **Keys JSON (mandatory)**  
