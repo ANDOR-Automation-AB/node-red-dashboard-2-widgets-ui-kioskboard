@@ -1,6 +1,6 @@
 {
   "name": "@andor-automation/node-red-dashboard-2-widgets-ui-kioskboard",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "author": "Andor Automation AB",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "wsl:install": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl_install.ps1",
     "wsl:restart": "vite build && npm pack && powershell -ExecutionPolicy Bypass -File ./scripts/wsl_install_run.ps1",
     "wsl:start": "wsl bash -c \"node-red\"",
-    "build": "vite build",
+    "build": "vite build && pack",
     "release": "npm version patch && npm publish --access public"
   },
   "files": [
