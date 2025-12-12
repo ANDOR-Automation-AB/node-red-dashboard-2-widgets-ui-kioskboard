@@ -54,12 +54,20 @@
         methods: {
             onInput(msg) { 
                 this.msg = msg;
-                this.value = msg.inputValue ?? msg?.payload;
+                let value = msg?.inputValue ?? msg?.payload ?? '';
+                if (this.props.scale && !isNaN(value) && value !== "" && value !== null) {
+                    value = Number(value) / Number(this.props.scale);
+                }
+                this.value = value;
             },
             onLoad(msg, base) {
                 this.base = base;
                 this.msg  = msg; 
-                this.value = msg.inputValue ?? msg?.payload;
+                let value = msg?.inputValue ?? msg?.payload ?? '';
+                if (this.props.scale && !isNaN(value) && value !== "" && value !== null) {
+                    value = Number(value) / Number(this.props.scale);
+                }
+                this.value = value;
             }
         },
         mounted() {
